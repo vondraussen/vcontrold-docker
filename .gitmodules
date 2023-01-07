@@ -1,0 +1,3 @@
+[submodule "vcontrold"]
+	path = vcontrold
+	url = https://github.com/openv/vcontrold.git

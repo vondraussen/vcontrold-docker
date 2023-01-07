@@ -11,8 +11,13 @@ WORKDIR /root/
 EXPOSE 3002
 
 COPY --from=0 /opt/vcontrold/build/vcontrold ./
-COPY --from=0 /opt/vcontrold/xml/* /etc/vcontrold/xml/
+COPY --from=0 /opt/vcontrold/build/vclient ./
+# COPY --from=0 /opt/vcontrold/build/vcntld ./
+COPY --from=0 /opt/vcontrold/xml/kw/* /etc/vcontrold/xml/kw/
+COPY --from=0 /opt/vcontrold/xml/300/* /etc/vcontrold/xml/300/
+COPY --from=0 /opt/vcontrold/xml/300/* /etc/vcontrold/
 COPY --from=0 /usr/lib/libxml2.so* /usr/lib/
 COPY --from=0 /usr/lib/liblzma.so* /usr/lib/
 
 CMD ["./vcontrold", "--nodaemon", "-v", "--xmlfile", "/etc/vcontrold/xml/300/vcontrold.xml"]
+# CMD ["./vcontrold", "--nodaemon", "-v", "-n", "--xmlfile", "/etc/vcontrold/xml/kw/vcontrold.xml"]
